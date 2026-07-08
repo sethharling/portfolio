@@ -1,0 +1,34 @@
+.App {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.page-content {
+  margin-left: 16.666%; /* Match navbar width */
+  width: 83.334%; /* Remaining space */
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.page-transition {
+  width: 100%;
+  position: relative;
+}
+
+#title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 28px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .page-content {
+    margin-left: 25%;
+    width: 75%;
+  }
+}
+
