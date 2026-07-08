@@ -1,6 +1,6 @@
 import './Main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from '../Navbar/Navbar';
 import Title from '../Title/Title';
