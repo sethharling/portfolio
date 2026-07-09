@@ -1,5 +1,19 @@
+:root {
+  /* Warm burgundy + cream + gold palette */
+  --bg: #f5eeda;        /* page background: soft warm cream */
+  --surface: #fffbef;   /* cards/raised surfaces: lighter ivory for gentle elevation */
+  --wine: #6b1e32;      /* primary: deep wine (rgb 107,30,50) */
+  --wine-dark: #551828; /* primary hover/pressed */
+  --gold: #c0912f;      /* accent: muted gold, harmonizes with wine */
+  --ink: #3a3634;       /* body text on light surfaces */
+}
+
 * {
-  background-color: #f7f0d9;
+  background-color: var(--bg);
+  /* Subtle paper grain. Inline SVG noise = no image file, no dependency.
+     Applied via * so it covers every cream surface; noise has no alignment,
+     so per-element tile seams are invisible. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
 
 
@@ -10,7 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f7f0d9;
+  background-color: var(--bg);
 }
 
 code {

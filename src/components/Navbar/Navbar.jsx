@@ -1,20 +1,33 @@
+import { useState } from 'react';
 import './Navbar.css';
 
 const Navbar = ({ currentPage, setCurrentPage }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleNavClick = (page) => {
     setCurrentPage(page);
+    setIsOpen(false); // close the menu after picking a page on mobile
   };
 
   return(
-    <nav className='Navbar'>
+    <nav className={`Navbar ${isOpen ? 'open' : ''}`}>
       <div className='navbar-header'>
-        <h2>Seth</h2>
-        <h2>Harling</h2>
+        <button className='navbar-title navbar-home' onClick={() => handleNavClick('home')}>
+          <h2>Seth</h2>
+          <h2>Harling</h2>
+        </button>
+        <button
+          className='navbar-toggle'
+          aria-label='Toggle navigation menu'
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
       <ul className='navbar-menu'>
-        <li className={`MenuItem ${currentPage === 'home' ? 'active' : ''}`}>
-          <button onClick={() => handleNavClick('home')}>Home</button>
-        </li>
         <li className={`MenuItem ${currentPage === 'about' ? 'active' : ''}`}>
           <button onClick={() => handleNavClick('about')}>About</button>
         </li>

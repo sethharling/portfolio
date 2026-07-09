@@ -27,8 +27,9 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .page-content {
-    margin-left: 25%;
-    width: 75%;
+    margin-left: 0;
+    width: 100%;
+    padding-top: 75px; /* clear the fixed top bar (collapsed navbar height) */
   }
 }
 

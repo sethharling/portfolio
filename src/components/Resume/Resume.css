@@ -4,19 +4,45 @@
     margin: 0 auto;
     padding: 2rem 1.5rem;
     line-height: 1.6;
-    transform: translateX(-8.333vw);
     color: rgb(107, 30, 50);
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.15rem;
+}
+
+/* Header row: title + download button */
+.resume-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* Main Heading */
 .resume-container h2 {
     font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin: 0;
     text-align: left;
     color: rgb(107, 30, 50);
+}
+
+.resume-download {
+    background-color: rgb(107, 30, 50);
+    color: #f7f1df;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.resume-download:hover {
+    background-color: var(--wine-dark);
+    transform: translateY(-2px);
 }
 
 /* Section Headings */

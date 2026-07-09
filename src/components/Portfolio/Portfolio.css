@@ -2,8 +2,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
-    transform: translateX(-8.333vw);
-    
 }
 
 .portfolio-header {
@@ -29,13 +27,12 @@
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
 .project-card {
-    background: #f7f0d9;
     border: 2px solid rgb(107, 30, 50);
     border-radius: 12px;
     padding: 1.5rem;
@@ -46,20 +43,18 @@
     flex-direction: column;
     height: 100%;
     box-shadow: 0 2px 8px rgba(107, 30, 50, 0.1);
+    background-color: #f5eeda;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(107, 30, 50, 0.2);
-    border-color: rgb(214, 214, 193);
+    border-color: var(--gold);
 }
 
 .project-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: flow-root; /* contain the floated badge */
     margin-bottom: 1rem;
-    gap: 1rem;
 }
 
 .project-card h3 {
@@ -71,6 +66,9 @@
 }
 
 .status-badge {
+    float: right;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 0.75rem;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
@@ -117,20 +115,12 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .portfolio-header h2 {
         font-size: 2.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .portfolio-container {
         padding: 1.5rem 1rem;
     }
@@ -141,5 +131,17 @@
     
     .portfolio-subtitle {
         font-size: 1rem;
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
     }
 }

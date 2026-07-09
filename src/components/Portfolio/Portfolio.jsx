@@ -15,7 +15,7 @@ const Portfolio = () => {
             title: 'Recipe Deblogger',
             description: 'A website that will de-blog and de-ad recipes from other websites.',
             status: 'Completed',
-            link: '#',
+            link: 'https://recipe-deblogger.com',
             tags: ['React', 'FastAPI', 'SQLite']
         },
         {
@@ -53,10 +53,10 @@ const Portfolio = () => {
                         rel="noopener noreferrer"
                     >
                         <div className="project-card-header">
-                            <h3>{project.title}</h3>
                             <span className={`status-badge ${project.status.toLowerCase().replace(' ', '-')}`}>
                                 {project.status}
                             </span>
+                            <h3>{project.title}</h3>
                         </div>
                         <p className="project-description">{project.description}</p>
                         <div className="project-tags">

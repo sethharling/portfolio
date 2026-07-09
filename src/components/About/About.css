@@ -10,5 +10,17 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
     margin-left: 80px;
-    max-width: 600px;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .about-me {
+        margin-left: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .about-me-p {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
 }
