@@ -1,33 +1,51 @@
 :root {
-  /* Warm burgundy + cream + gold palette */
-  --bg: #f5eeda;        /* page background: soft warm cream */
-  --surface: #fffbef;   /* cards/raised surfaces: lighter ivory for gentle elevation */
-  --wine: #6b1e32;      /* primary: deep wine (rgb 107,30,50) */
-  --wine-dark: #551828; /* primary hover/pressed */
-  --gold: #c0912f;      /* accent: muted gold, harmonizes with wine */
-  --ink: #3a3634;       /* body text on light surfaces */
+  --black: #000;
+  --white: #fff;
+  --gray: #8a8a8a;
+  --line: rgba(128, 128, 128, 0.35);
+  --display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --serif: 'Gloock', Georgia, serif;
+  --mono: 'Fira Code', Menlo, Consolas, monospace;
 }
 
 * {
-  background-color: var(--bg);
-  /* Subtle paper grain. Inline SVG noise = no image file, no dependency.
-     Applied via * so it covers every cream surface; noise has no alignment,
-     so per-element tile seams are invisible. */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  box-sizing: border-box;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+html {
+  position: relative;
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--display);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body.locked {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
 }
