@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SLIDE_DELAY, SLIDE_DURATION, SLIDE_EASE } from './timing';
 
-const GIF_FILES = ['vid1.gif', 'vid2.gif', 'vid3.gif'];
+const GIF_FILES = ['vid1.gif', 'vid2.gif', 'vid3.gif', 'vid4.gif', 'vid5.gif', 'vid6.gif', 'vid7.gif', 'vid8.gif'];
 
 const Film = ({ skipEntrance = false }) => {
   const reduceMotion = useReducedMotion();
@@ -11,8 +11,10 @@ const Film = ({ skipEntrance = false }) => {
   const [file] = useState(() =>
     GIF_FILES.length ? GIF_FILES[Math.floor(Math.random() * GIF_FILES.length)] : null
   );
+  // Fetch the corrected looping GIF instead of a previously cached one-shot version.
+  const animationFile = file === 'vid3.gif' ? `${file}?v=2` : file;
   const source = file
-    ? `${process.env.PUBLIC_URL}/vids/${reduceMotion ? file.replace(/\.gif$/, '.png') : file}`
+    ? `${process.env.PUBLIC_URL}/vids/${reduceMotion ? file.replace(/\.gif$/, '.png') : animationFile}`
     : null;
 
   return (
