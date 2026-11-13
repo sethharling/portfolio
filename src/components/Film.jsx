@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SLIDE_DELAY, SLIDE_DURATION, SLIDE_EASE } from './timing';
 
-const Film = ({ source, skipEntrance = false }) => {
+const Film = ({ source, skipEntrance = false, showArrow = true }) => {
   const reduceMotion = useReducedMotion();
   const instant = skipEntrance || reduceMotion;
   const [failedSources, setFailedSources] = useState([]);
@@ -24,7 +24,7 @@ const Film = ({ source, skipEntrance = false }) => {
           onError={() => setFailedSources((sources) => [...sources, source])}
         />
       )}
-      <motion.div
+      {showArrow && <motion.div
         className="film-scroll-wrap"
         initial={instant ? false : { y: 160 }}
         animate={{ y: 0 }}
@@ -35,7 +35,7 @@ const Film = ({ source, skipEntrance = false }) => {
             <path d="M12 4v16M5 13l7 7 7-7" />
           </svg>
         </a>
-      </motion.div>
+      </motion.div>}
     </section>
   );
 };

@@ -45,23 +45,19 @@ const App = () => {
     <>
       <link rel="preload" as="image" href={filmSource} fetchPriority="high" />
       {!introGone && <Intro onReveal={reveal} onDone={finish} />}
-      {entered && (
-        <>
-          <Nav skipEntrance={skipIntro} />
-          <main>
-            <h1 className="visually-hidden">Seth Harling — Software Engineer</h1>
-            <Film source={filmSource} skipEntrance={skipIntro} />
-            <About />
-            <Portfolio />
-            <Resume />
-            <Contact />
-          </main>
-          <footer className="footer">
-            <a href="https://github.com/sethharling" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://linkedin.com/in/seth-harling" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </footer>
-        </>
-      )}
+      {entered && <Nav skipEntrance={skipIntro} />}
+      <main>
+        <h1 className="visually-hidden">Seth Harling — Software Engineer</h1>
+        <Film source={filmSource} skipEntrance={skipIntro} showArrow={entered} />
+        <About />
+        <Portfolio />
+        <Resume />
+        <Contact />
+      </main>
+      <footer className="footer">
+        <a href="https://github.com/sethharling" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/seth-harling" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </footer>
     </>
   );
 };
