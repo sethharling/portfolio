@@ -70,7 +70,7 @@ const Resume = () => (
     <div className="content narrow" id="resume-content">
       <Reveal>
         <p className="lead">
-          I'm a full-stack engineer working primarily with Vue, React, 
+          Software engineer working primarily with Vue, React, 
           .NET, and Python. My experience spans web applications, backend 
           APIs, cloud infrastructure, and LLMs. 
         </p>

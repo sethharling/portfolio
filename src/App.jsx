@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import './App.css';
 import Intro from './components/Intro';
 import Nav from './components/Nav';
@@ -7,10 +8,14 @@ import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
+import { getFilmSource, pickFilmFile } from './components/filmMedia';
 
 const ENTRANCE_SESSION_KEY = 'portfolio:entrance-seen';
 
 const App = () => {
+  const reduceMotion = useReducedMotion();
+  const [filmFile] = useState(pickFilmFile);
+  const filmSource = getFilmSource(filmFile, reduceMotion);
   const [skipIntro] = useState(() => {
     try {
       return sessionStorage.getItem(ENTRANCE_SESSION_KEY) === 'true';
@@ -38,13 +43,14 @@ const App = () => {
 
   return (
     <>
+      <link rel="preload" as="image" href={filmSource} fetchPriority="high" />
       {!introGone && <Intro onReveal={reveal} onDone={finish} />}
       {entered && (
         <>
           <Nav skipEntrance={skipIntro} />
           <main>
             <h1 className="visually-hidden">Seth Harling — Software Engineer</h1>
-            <Film skipEntrance={skipIntro} />
+            <Film source={filmSource} skipEntrance={skipIntro} />
             <About />
             <Portfolio />
             <Resume />

@@ -2,36 +2,27 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SLIDE_DELAY, SLIDE_DURATION, SLIDE_EASE } from './timing';
 
-const GIF_FILES = ['vid1.gif', 'vid2.gif', 'vid3.gif', 'vid4.gif', 'vid5.gif', 'vid6.gif', 'vid7.gif', 'vid8.gif'];
-
-const Film = ({ skipEntrance = false }) => {
+const Film = ({ source, skipEntrance = false }) => {
   const reduceMotion = useReducedMotion();
   const instant = skipEntrance || reduceMotion;
   const [failedSources, setFailedSources] = useState([]);
-  const [file] = useState(() =>
-    GIF_FILES.length ? GIF_FILES[Math.floor(Math.random() * GIF_FILES.length)] : null
-  );
-  // Fetch the corrected looping GIF instead of a previously cached one-shot version.
-  const animationFile = file === 'vid3.gif' ? `${file}?v=2` : file;
-  const source = file
-    ? `${process.env.PUBLIC_URL}/vids/${reduceMotion ? file.replace(/\.gif$/, '.png') : animationFile}`
-    : null;
+  const [loadedSource, setLoadedSource] = useState(null);
 
   return (
     <section className="film" id="film">
-      {source && !failedSources.includes(source) ? (
+      {source && !failedSources.includes(source) && (
         <img
           className="film-gif"
           key={source}
           src={source}
-          alt={reduceMotion ? 'Still frame from a featured film' : 'Featured film animation'}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          style={{ visibility: loadedSource === source ? 'visible' : 'hidden' }}
+          onLoad={() => setLoadedSource(source)}
           onError={() => setFailedSources((sources) => [...sources, source])}
         />
-      ) : (
-        <div className="film-placeholder">
-          <div className="film-play" aria-hidden="true" />
-          <p>{source ? 'Animation unavailable' : 'Animation coming soon'}</p>
-        </div>
       )}
       <motion.div
         className="film-scroll-wrap"
